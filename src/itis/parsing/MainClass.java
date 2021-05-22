@@ -28,7 +28,7 @@ public class MainClass {
     private ParkParsingServiceImpl parsingService = new ParkParsingServiceImpl();
 
     public static void main(String[] args) throws Exception {
-        new MainClass().run("");
+        new MainClass().run("src/itis/parsing/resources/parkdata");
     }
 
     private void run(String parkFilePath) {
@@ -38,7 +38,7 @@ public class MainClass {
         try {
             park = parsingService.parseParkData(parkFilePath);
         } catch (ParkParsingException parsingException) {
-
+            System.out.println(parsingException.getValidationErrors());
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
